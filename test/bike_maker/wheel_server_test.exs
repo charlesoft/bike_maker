@@ -22,11 +22,13 @@ defmodule BikeMaker.WheelServerTest do
   end
 
   describe "get_diameter/1" do
-    {:ok, pid} = WheelServer.start_link()
+    test "returns wheel diameter" do
+      {:ok, pid} = WheelServer.start_link()
 
-    WheelServer.add_data(pid, :tire, 6.6)
-    WheelServer.add_data(pid, :rim, 2.4)
+      WheelServer.add_data(pid, :tire, 6.6)
+      WheelServer.add_data(pid, :rim, 2.4)
 
-    assert WheelServer.get_diameter(pid) == 15.6
+      assert WheelServer.get_diameter(pid) == 15.6
+    end
   end
 end
